@@ -1,388 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap");
+
+:root {
+    --main-bg-color: rgb(199, 252, 240);
+    --events-section-bg: rgb(0, 242, 255);
+    --events-item-hover-bg: rgb(143, 249, 255);
+    --news-section-bg: rgb(255, 248, 214);
+    --news-item-hover-bg: blanchedalmond;
+    --headings-fonts: "Ubuntu", sans-serif;
+}
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: "Nunito Sans", sans-serif;
 }
 
+.container {
+    max-width: 1150px;
+    margin: auto;
+}
 
-/*===========
-Global Styles
-===========*/
+body {
+    background-color: var(--main-bg-color);
+}
+
+.events-page {
+    background-color: white;
+}
+
+.events-page article{
+    margin: 25px 0px;
+}
 
 h1 {
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: var(--headings-fonts);
+    font-weight: bold;
 }
 
+ul {
+    list-style-type: none;
+}
+
+hr {
+    margin-top: 4px;
+    border: 0.3px solid rgb(158, 158, 158);
+}
+
+footer {
+    text-align: center;
+    background-color: white;
+    padding: 0.5rem;
+}
+
+.main {
+    width: 90%;
+    display: flex;
+}
+
+/*===================
+ Middle Column Styles
+ ==================*/
+.middle-column {
+    width: 85%;
+    padding: 5px;
+}
+
+.middle-column-header {
+    font-size: 1.5rem;
+    letter-spacing: 1.3px;
+    text-align: center;
+    margin: 2rem 0rem 3.5rem;
+}
+
+/* middle-column badge */
 article h1 {
+    font-size: 1.2rem;
     border-radius: 4px;
-    padding: 0px 3px;
     display: inline;
     background-color: green;
     color: white;
     letter-spacing: 1.1px;
-}
-
-.middle-column-header {
-    letter-spacing: 1.5px;
-    padding: 15px 0px;
-    text-align: center;
-    font-weight: 900;
-    animation-name: middle-column-header-animation;
-    animation-duration: 1s;
-}
-
-@keyframes middle-column-header-animation {
-    0% {
-        transform: translate(0px, -15px);
-    }
-}
-
-hr {
-    margin-top: 2px;
-    border: 1px solid rgb(158, 158, 158);
+    padding: 0.2rem 0.4rem;
 }
 
 .middle-column p {
     margin: 12px 0px;
 }
 
-a:hover {
-    color: hotpink;
+figure {
+    float: right;
+    padding-top: 5px;
+    padding-left: 5px;
 }
 
-a:active {
-    color: blue;
-}
-
-footer {
-    text-align: center;
-    margin: 5px 0px;
-}
-
-span::before {
-    top: -6px;
-}
-
-span::after {
-    top: 6px;
-}
-
-
-/*===================
-Events Section Styles
-===================*/
-
-#events-check {
-    position: absolute;
-    top: 0;
-    opacity: 0;
-    pointer-events: none;
-}
-
-.events-toggle-btn {
-    height: 25px;
-    width: 33px;
-    background-color: #ffffff;
-    border-radius: 4px;
-    cursor: pointer;
-    display: none;
-    align-items: center;
-    justify-content: center;
-}
-
-.events-toggle-btn span {
-    width: 20px;
-    height: 2px;
-    background-color: black;
-    position: relative;
-}
-
-.events-toggle-btn span::after,
-.events-toggle-btn span::before {
+.middle-column article::after {
+    clear: both;
     content: "";
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    position: absolute;
-    left: 0;
+    display: table;
 }
 
-.events-menu {
-    display: none;
+/*==============================
+  News And Events Section Styles
+ ==============================*/
+.news-section h1,
+.events-section h1 {
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: 1.1px;
+    margin-bottom: 0.5rem;
+    padding: 10px;
 }
 
-
-/*====================================================
-Styles Applied AFTER the CLICK of EVENTS TOGGLE BUTTON
-====================================================*/
-
-#events-check:checked~.events-section .events-toggle-btn {
-    background-color: rgb(0, 242, 255);
+.events-section,
+.news-section {
+    padding: 0.4rem;
 }
 
-#events-check:checked~.events-section .events-toggle-btn span {
-    background-color: transparent;
+.events-section>div,
+.news-section>div {
+    padding: 10px;
 }
 
-#events-check:checked~.events-section .events-toggle-btn span::before {
+.events-menu a,
+.news-articles a {
+    color: black;
+}
+
+/*====================
+ Events Section Styles
+ ====================*/
+.events-section {
+    width: 10%;
+    position: fixed;
     top: 0;
-    transform: rotate(45deg);
+    right: 0;
 }
 
-#events-check:checked~.events-section .events-toggle-btn span::after {
-    top: 0;
-    transform: rotate(-45deg);
+.events-section>div {
+    background-color: var(--events-section-bg);
 }
 
-#events-check:checked~.events-section .events-menu {
-    display: flex;
-    flex-direction: column;
-    padding-left: 20px;
+.events-menu li {
+    padding: 5px 10px;
 }
 
-#events-check:checked~.events-section .events-nav {
-    background-color: #ffffff;
-    border: 1px solid rgb(0, 242, 255);
+.events-menu a {
+    text-decoration: none;
 }
 
-#events-check:checked~.events-section {
-    overflow: scroll;
-    padding-top: 15px;
-    height: 55%;
-    animation-name: events-btn-animation;
-    animation-duration: 1s;
-    animation-timing-function: ease;
+.events-menu li:hover {
+    background-color: var(--events-item-hover-bg);
 }
 
-@keyframes events-btn-animation {
-    0% {
-        height: 0%;
-    }
+/*==================
+ News Section Styles
+ =================*/
+.news-section {
+    width: 15%;
 }
 
-#events-check:checked~.events-section .events-nav header h1 {
-    animation-name: events-header-animation;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
+.news-section>div {
+    background-color: var(--news-section-bg);
+    height: fit-content;
 }
-
-@keyframes events-header-animation {
-    100% {
-        letter-spacing: 3.1px;
-    }
-}
-
-
-/*=================
-News Section Styles
-=================*/
 
 .news-articles a {
     font-size: smaller;
+    padding: 10px 0px;
+}
+
+.news-articles article:hover {
+    background-color: var(--news-item-hover-bg);
 }
 
 .news-articles article {
-    padding: 12px;
-    background-color: rgb(255, 248, 214);
+    padding: 10px 10px;
 }
-
-#news-check {
-    position: absolute;
-    top: 0;
-    opacity: 0;
-    pointer-events: none;
-}
-
-.news-toggle-btn {
-    height: 25px;
-    width: 33px;
-    background-color: #ffffff;
-    border-radius: 4px;
-    cursor: pointer;
-    display: none;
-    align-items: center;
-    justify-content: center;
-}
-
-.news-toggle-btn span {
-    width: 20px;
-    height: 2px;
-    background-color: black;
-    position: relative;
-}
-
-.news-toggle-btn span::after,
-.news-toggle-btn span::before {
-    content: "";
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    position: absolute;
-    left: 0;
-}
-
-.news-articles {
-    display: none;
-}
-
-
-/*==================================================
-Styles Applied AFTER the CLICK of NEWS TOGGLE BUTTON
-==================================================*/
-
-#news-check:checked~.news-section .news-toggle-btn {
-    background-color: rgb(253, 235, 145);
-}
-
-#news-check:checked~.news-section .news-toggle-btn span {
-    background-color: transparent;
-}
-
-#news-check:checked~.news-section .news-toggle-btn span::before {
-    top: 0;
-    transform: rotate(45deg);
-}
-
-#news-check:checked~.news-section .news-toggle-btn span::after {
-    top: 0;
-    transform: rotate(-45deg);
-}
-
-#news-check:checked~.news-section .news-articles {
-    margin: 5px 10px;
-    border-radius: 5px;
-    border: 2px solid rgb(248, 248, 145);
-    display: block;
-}
-
-#news-check:checked~.news-section .news-nav {
-    background-color: #ffffff;
-    border: 1px solid rgb(253, 235, 145);
-}
-
-#news-check:checked~.news-section {
-    overflow: scroll;
-    padding-top: 15px;
-    height: 55%;
-    animation-name: news-btn-animation;
-    animation-duration: 1s;
-    animation-timing-function: ease;
-}
-
-@keyframes news-btn-animation {
-    0% {
-        height: 0%;
-    }
-}
-
-#news-check:checked~.news-section .news-nav header h1 {
-    animation-name: news-header-animation;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
-}
-
-@keyframes news-header-animation {
-    100% {
-        letter-spacing: 3.1px;
-    }
-}
-
-
-/*======================= 
-Styles for DESKTOP Screen
-=======================*/
-
-@media screen and (min-width:1290px) {
-    .main {
-        border-radius: 5px;
-        background-color: rgb(199, 252, 240);
-        width: 90%;
-        margin: 1px;
-        display: flex;
-    }
-    /*===================
-     Middle Column Styles
-     ==================*/
-    .middle-column {
-        width: 85%;
-    }
-    .middle-column-header {
-        font-size: 1.5rem;
-    }
-    article h1 {
-        font-size: 1.2rem;
-    }
-    article p {
-        padding-right: 10px;
-    }
-    figure {
-        float: right;
-        margin-top: 10px;
-        margin-left: 10px;
-    }
-    .middle-column article::after {
-        clear: both;
-        content: "";
-        display: table;
-    }
-    /*===================
-     Events Section Styles
-     ===================*/
-    .events-section {
-        width: 9.8%;
-        border-radius: 5px;
-        border: 2px solid rgb(199, 252, 240);
-        background-color: rgb(0, 242, 255);
-        list-style-position: inside;
-        padding: 10px;
-        position: fixed;
-        top: 0;
-        right: 0;
-    }
-    .events-section h1 {
-        font-size: 1.4rem;
-        letter-spacing: 1.1px;
-        text-align: center;
-    }
-    .events-menu li {
-        padding: 4px 0px;
-    }
-    .events-menu {
-        display: block;
-    }
-    /*==================
-     News Section Styles
-     =================*/
-    .news-section {
-        width: 15%;
-    }
-    .news-section h1 {
-        padding: 10px 0px;
-        font-size: 1.4rem;
-        letter-spacing: 1.1px;
-        text-align: center;
-    }
-    .news-articles {
-        margin: 0px 10px;
-        border-radius: 5px;
-        border: 2px solid rgb(248, 248, 145);
-        display: block;
-    }
-}
-
 
 /*======================
 Styles for TABLET Screen
 ======================*/
-
-@media screen and (max-width:1289px) and (min-width:700px) {
+@media screen and (max-width: 1289px) and (min-width: 700px) {
     .main {
-        background-color: rgb(199, 252, 240);
         width: 100%;
-        margin: 30px 0px 0px 0px;
-        display: flex;
     }
+
     /*===================
      Middle Column Styles
      ==================*/
@@ -390,87 +194,38 @@ Styles for TABLET Screen
         width: 80%;
         padding-right: 15px;
     }
+
     .middle-column-header {
-        padding-top: 25px;
         font-size: 1.4rem;
     }
-    article h1 {
-        font-size: 1.3rem;
-    }
-    figure {
-        float: right;
-        margin-top: 10px;
-        margin-left: 10px;
-    }
-    .middle-column article::after {
-        clear: both;
-        content: "";
-        display: table;
-    }
+
     /*===================
      Events Section Styles
      ===================*/
     .events-section {
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 100%;
-        margin: 19px 1px 0px 1px;
-        background-color: rgb(0, 242, 255);
-        list-style-position: inside;
+        display: none;
     }
-    .events-section h1 {
-        font-size: 1.2rem;
-        letter-spacing: 1.1px;
-    }
-    .events-nav {
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: inherit;
-        border-radius: 0px 0px 8px 8px;
-        background-color: rgb(0, 242, 255);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 5px 15px;
-    }
-    .events-menu li {
-        padding: 4px 0px;
-    }
-    .events-toggle-btn {
-        display: flex;
-    }
+
     /*==================
      News Section Styles
      =================*/
     .news-section {
         width: 20%;
     }
+
     .news-section h1 {
-        padding: 10px 0px;
         font-size: 1.2rem;
-        letter-spacing: 1.1px;
-        text-align: center;
-    }
-    .news-articles {
-        margin: 0px 10px;
-        border-radius: 5px;
-        border: 2px solid rgb(248, 248, 145);
-        display: block;
     }
 }
-
 
 /*====================== 
 Styles for MOBILE Screen
 ======================*/
-
-@media screen and (max-width:699px) {
+@media screen and (max-width: 699px) {
     .main {
-        background-color: rgb(199, 252, 240);
-        margin: 20px 1px 0px 1px;
+        width: 100%;
     }
+
     /*===================
      Middle Column Styles
      ==================*/
@@ -478,85 +233,26 @@ Styles for MOBILE Screen
         width: 100%;
         padding: 0px 15px;
     }
+
     .middle-column-header {
-        padding-top: 35px;
         font-size: 1.3rem;
     }
+
     article h1 {
         font-size: 1.2rem;
     }
-    figure {
-        float: right;
-        margin-top: 10px;
-        margin-left: 10px;
-    }
-    .middle-column article::after {
-        clear: both;
-        content: "";
-        display: table;
-    }
+
     /*===================
      Events Section Styles
      ===================*/
     .events-section {
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 50%;
-        margin: 19px 0px 0px 0px;
-        background-color: rgb(0, 242, 255);
-        list-style-position: inside;
+        display: none;
     }
-    .events-section h1 {
-        font-size: 1.1rem;
-        letter-spacing: 1.1px;
-    }
-    .events-nav {
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: inherit;
-        border-radius: 0px 0px 15px 0px;
-        background-color: rgb(0, 242, 255);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 5px 15px;
-    }
-    .events-menu li {
-        padding: 4px 0px;
-    }
-    .events-toggle-btn {
-        display: flex;
-    }
+
     /*==================
      News Section Styles
      =================*/
     .news-section {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 50%;
-        margin: 19px 0px 0px 0px;
-        background-color: rgb(255, 248, 214);
-    }
-    .news-section h1 {
-        font-size: 1.1rem;
-        letter-spacing: 1.1px;
-    }
-    .news-nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: inherit;
-        border-radius: 0px 0px 0px 15px;
-        background-color: rgb(253, 235, 145);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 5px 15px;
-    }
-    .news-toggle-btn {
-        display: flex;
+        display: none;
     }
 }
